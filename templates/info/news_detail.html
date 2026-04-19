@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% from "info/_sidebar.html" import info_sidebar %}
+{% block title %}{{ item.title }} — ЗАО ПП «Урал»{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+  <div class="container">
+    <h1>{{ item.title }}</h1>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Главная</a>
+      <i class="fa fa-chevron-right"></i>
+      <a href="{{ url_for('info_index') }}">Информация</a>
+      <i class="fa fa-chevron-right"></i>
+      <a href="{{ url_for('info_news') }}">Новости</a>
+      <i class="fa fa-chevron-right"></i>
+      <span>{{ item.title }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-layout">
+    {{ info_sidebar('news') }}
+    <div>
+      {% set year, month, full_date = format_news_date(item.published_at or item.created_at) %}
+      <article class="info-card">
+        <p style="margin-bottom:16px;color:var(--gray);"><i class="fa fa-calendar"></i> {{ full_date }}</p>
+        {% if item.image %}
+          <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.title }}" style="width:100%;max-height:360px;object-fit:cover;margin-bottom:20px;">
+        {% endif %}
+        <div style="font-size:0.98rem;line-height:1.8;color:var(--gray);">{{ item.content|nl2br|safe }}</div>
+      </article>
+
+      {% if latest_news %}
+      <div class="section-title" style="margin-top:30px;"><h2>Другие новости</h2></div>
+      <div class="news-list">
+        {% for news in latest_news %}
+        <div class="news-item">
+          <div class="news-body">
+            <h4><a href="{{ url_for('news_detail', slug=news.slug) }}">{{ news.title }}</a></h4>
+            <p>{{ news.summary }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

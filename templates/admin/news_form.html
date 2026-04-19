@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+{% block page_title %}{{ 'Добавить новость' if action == 'create' else 'Редактировать новость' }}{% endblock %}
+{% block content %}
+<div class="card">
+  <form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="current_image" value="{{ item.image if item and item.image else '' }}">
+    <div class="field"><label>Заголовок</label><input type="text" name="title" value="{{ item.title if item else '' }}" required></div>
+    <div class="field"><label>Краткое описание</label><textarea name="summary">{{ item.summary if item else '' }}</textarea></div>
+    <div class="field"><label>Полный текст</label><textarea name="content" style="min-height:220px;">{{ item.content if item else '' }}</textarea></div>
+    <div class="grid-2">
+      <div class="field"><label>Дата публикации</label><input type="text" name="published_at" value="{{ item.published_at if item else '' }}" placeholder="2026-04-19 12:00:00"></div>
+      <div class="field"><label>Изображение</label><input type="file" name="image"></div>
+    </div>
+    <div class="field"><label><input type="checkbox" name="is_published" {% if not item or item.is_published %}checked{% endif %}> Опубликовать</label></div>
+    <div class="actions"><button class="btn" type="submit">Сохранить</button><a class="btn-outline" href="{{ url_for('admin_news_list') }}">Назад</a></div>
+  </form>
+</div>
+{% endblock %}

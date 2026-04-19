@@ -1,0 +1,28 @@
+{% macro company_sidebar(active_page) %}
+<div class="sidebar">
+  <nav class="sidebar-menu">
+    <h3><i class="fa fa-building" style="margin-right:8px;"></i>Компания</h3>
+    <a href="{{ url_for('company_about') }}" {% if active_page=='about' %}class="active"{% endif %}>
+      О компании <i class="fa fa-chevron-right"></i>
+    </a>
+    <a href="{{ url_for('company_history') }}" {% if active_page=='history' %}class="active"{% endif %}>
+      История <i class="fa fa-chevron-right"></i>
+    </a>
+    <a href="{{ url_for('company_documents') }}" {% if active_page=='documents' %}class="active"{% endif %}>
+      Документы <i class="fa fa-chevron-right"></i>
+    </a>
+    <a href="{{ url_for('company_partners') }}" {% if active_page=='partners' %}class="active"{% endif %}>
+      Партнёры <i class="fa fa-chevron-right"></i>
+    </a>
+    <a href="{{ url_for('company_reviews') }}" {% if active_page=='reviews' %}class="active"{% endif %}>
+      Отзывы клиентов <i class="fa fa-chevron-right"></i>
+    </a>
+    <a href="{{ url_for('company_vacancies') }}" {% if active_page=='vacancies' %}class="active"{% endif %}>
+      Вакансии <i class="fa fa-chevron-right"></i>
+    </a>
+    <a href="{{ url_for('company_requisites') }}" {% if active_page=='requisites' %}class="active"{% endif %}>
+      Реквизиты <i class="fa fa-chevron-right"></i>
+    </a>
+  </nav>
+</div>
+{% endmacro %}

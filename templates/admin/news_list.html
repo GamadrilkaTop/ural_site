@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% block page_title %}Новости{% endblock %}
+{% block page_actions %}<a class="btn" href="{{ url_for('admin_news_create') }}"><i class="fa fa-plus"></i> Добавить новость</a>{% endblock %}
+{% block content %}
+<div class="card" style="padding:0;overflow:hidden;">
+<table>
+  <thead><tr><th>ID</th><th>Заголовок</th><th>Дата</th><th>Статус</th><th>Действия</th></tr></thead>
+  <tbody>
+    {% for item in items %}
+    <tr>
+      <td>{{ item.id }}</td>
+      <td><strong>{{ item.title }}</strong></td>
+      <td>{{ item.published_at or item.created_at }}</td>
+      <td><span class="badge">{{ 'Опубликовано' if item.is_published else 'Черновик' }}</span></td>
+      <td class="actions">
+        <a class="btn-outline" href="{{ url_for('admin_news_edit', item_id=item.id) }}">Изменить</a>
+        <form method="post" action="{{ url_for('admin_news_delete', item_id=item.id) }}" onsubmit="return confirm('Удалить новость?');">
+          <button class="btn-danger" type="submit">Удалить</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "admin/base.html" %}
+{% block page_title %}Панель управления{% endblock %}
+{% block content %}
+<div class="stats">
+  <div class="card stat"><div class="muted">Новости</div><strong>{{ stats.news_count }}</strong></div>
+  <div class="card stat"><div class="muted">Категории</div><strong>{{ stats.category_count }}</strong></div>
+  <div class="card stat"><div class="muted">Товары</div><strong>{{ stats.product_count }}</strong></div>
+</div>
+<div class="grid-2">
+  <div class="card">
+    <h3 style="margin-top:0;">Последние новости</h3>
+    {% for item in latest_news %}
+      <p><strong>{{ item.title }}</strong><br><span class="muted">{{ item.published_at or item.created_at }}</span></p>
+    {% else %}
+      <p class="muted">Новостей пока нет.</p>
+    {% endfor %}
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;">Последние товары</h3>
+    {% for item in latest_products %}
+      <p><strong>{{ item.name }}</strong><br><span class="muted">{{ item.category_name }}</span></p>
+    {% else %}
+      <p class="muted">Товаров пока нет.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

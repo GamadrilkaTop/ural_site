@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% from "company/_sidebar.html" import company_sidebar %}
+{% block title %}Реквизиты — ЗАО ПП «Урал»{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+  <div class="container">
+    <h1>Реквизиты</h1>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Главная</a>
+      <i class="fa fa-chevron-right"></i>
+      <a href="{{ url_for('company_about') }}">Компания</a>
+      <i class="fa fa-chevron-right"></i>
+      <span>Реквизиты</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-layout">
+    {{ company_sidebar('requisites') }}
+
+    <div class="content-block">
+      <h2>Реквизиты компании</h2>
+      <p>Официальные реквизиты ЗАО ПП «Урал» для оформления договоров и платёжных документов.</p>
+
+      <table class="info-table" style="margin-top: 24px;">
+        <tbody>
+          <tr><td style="width:220px; font-weight: 600; color: var(--dark);">Полное наименование</td><td>Закрытое акционерное общество «Производственное предприятие «Урал»</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">Краткое наименование</td><td>ЗАО ПП «Урал»</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">Юридический адрес</td><td>622034, Свердловская обл., г. Нижний Тагил, ул. Трикотажников, д. 15</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">Почтовый адрес</td><td>622034, Свердловская обл., г. Нижний Тагил, ул. Трикотажников, д. 15</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">ИНН</td><td>6668013870</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">КПП</td><td>668401001</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">ОГРН</td><td>1016601754812</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">ОКПО</td><td>47345678</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">ОКВЭД</td><td>25.99 — Производство прочих готовых металлических изделий</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">Расчётный счёт</td><td>40702810616540000111</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">Банк</td><td>Уральский филиал ПАО «Сбербанк России»</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">БИК</td><td>046577674</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">Корреспондентский счёт</td><td>30101810500000000674</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">Телефон</td><td>+7 (3435) 35-27-27</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">E-mail</td><td>info@ppural.ru</td></tr>
+          <tr><td style="font-weight: 600; color: var(--dark);">Генеральный директор</td><td>Действует на основании Устава</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

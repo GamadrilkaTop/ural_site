@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/26871555/README.md)
 # ЗАО ПП «Урал» — сайт на Flask с админ-панелью
 
 В проект добавлены:
