@@ -2,7 +2,6 @@
 {% block body %}
 <div class="login-box">
   <h1 style="font-family:'Oswald',sans-serif;margin-top:0;">Вход в админ-панель</h1>
-  <p class="muted">После первого запуска используйте логин <strong>admin</strong> и пароль <strong>admin12345</strong>.</p>
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       {% for category, message in messages %}
