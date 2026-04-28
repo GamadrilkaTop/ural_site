@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% from "info/_sidebar.html" import info_sidebar %}
+{% block title %}Статьи — ЗАО ПП «Урал»{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+  <div class="container">
+    <h1>Статьи</h1>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Главная</a>
+      <i class="fa fa-chevron-right"></i>
+      <a href="{{ url_for('info_index') }}">Информация</a>
+      <i class="fa fa-chevron-right"></i>
+      <span>Статьи</span>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="page-layout">
+    {{ info_sidebar('articles') }}
+    <div>
+      {% set articles = [
+        ('Обслуживание муфты МППГ-02', 'Технические особенности, регламент технического обслуживания и замены муфты упругой МППГ-02 в приводе генератора пассажирского вагона. Описание возможных неисправностей и методы их устранения.', 'Техническая документация'),
+        ('Применение съёмника СМУГ при ТО-3', 'Методика применения съёмника «СМУГ» при проведении технического обслуживания ТО-3 пассажирских вагонов. Пошаговая инструкция по безопасному демонтажу муфты.', 'Методические материалы'),
+        ('Выбор материала для деталей вагонного хозяйства', 'Обзор конструкционных материалов, применяемых при изготовлении деталей для железнодорожного транспорта. Критерии выбора марки стали в зависимости от условий эксплуатации.', 'Технические статьи'),
+        ('Требования к точности обработки деталей РЖД', 'Нормативные требования к точности геометрических параметров деталей пассажирских вагонов. Применяемые допуски и методы контроля в соответствии с ГОСТ.', 'Нормативная база'),
+      ] %}
+      {% for a in articles %}
+      <div style="background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--green); padding: 22px 24px; margin-bottom: 16px; transition: box-shadow 0.2s;">
+        <div style="font-family: var(--font-heading); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 6px;">{{ a[2] }}</div>
+        <h3 style="font-size: 1rem; margin-bottom: 8px;">{{ a[0] }}</h3>
+        <p style="color: var(--gray); font-size: 0.9rem; line-height: 1.65; margin: 0;">{{ a[1] }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

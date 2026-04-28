@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% block body %}
+<div class="top">
+  <h1>Товары</h1>
+  <a class="btn" href="{{ url_for('admin_product_add') }}">Добавить товар</a>
+</div>
+<table>
+  <tr><th>Название</th><th>Категория</th><th>Материал</th><th>Статус</th><th>Действия</th></tr>
+  {% for item in items %}
+  <tr>
+    <td>{{ item.name }}</td>
+    <td>{{ item.category_name or '—' }}</td>
+    <td>{{ item.material or '—' }}</td>
+    <td>{{ 'Опубликовано' if item.is_published else 'Скрыто' }}</td>
+    <td>
+      <div class="actions">
+        <a class="btn small gray" href="{{ url_for('admin_product_edit', item_id=item.id) }}">Редактировать</a>
+        <form method="post" action="{{ url_for('admin_product_delete', item_id=item.id) }}" onsubmit="return confirm('Удалить товар?')">
+          <button class="btn small red" type="submit">Удалить</button>
+        </form>
+      </div>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
