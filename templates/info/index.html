@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% from "info/_sidebar.html" import info_sidebar %}
+{% block title %}Информация — ЗАО ПП «Урал»{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+  <div class="container">
+    <h1>Информация</h1>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Главная</a>
+      <i class="fa fa-chevron-right"></i>
+      <span>Информация</span>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="page-layout">
+    {{ info_sidebar('') }}
+    <div style="padding-top: 20px;">
+      <p style="color: var(--gray);">Выберите необходимый пункт в меню.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

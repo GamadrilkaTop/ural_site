@@ -1,0 +1,29 @@
+{% extends "admin/base.html" %}
+{% block body %}
+<h1>{{ 'Редактировать товар' if item else 'Добавить товар' }}</h1>
+<div class="card">
+  <form method="post">
+    <label>Категория</label>
+    <select name="category_id">
+      <option value="">Без категории</option>
+      {% for cat in categories %}
+        <option value="{{ cat.id }}" {% if item and item.category_id == cat.id %}selected{% endif %}>{{ cat.name }}</option>
+      {% endfor %}
+    </select>
+    <label>Название</label>
+    <input name="name" value="{{ item.name if item else '' }}" required>
+    <label>Описание</label>
+    <textarea name="description">{{ item.description if item else '' }}</textarea>
+    <label>Артикул</label>
+    <input name="sku" value="{{ item.sku if item else '' }}">
+    <label>Материал</label>
+    <input name="material" value="{{ item.material if item else '' }}">
+    <label>Масса / вес</label>
+    <input name="weight" value="{{ item.weight if item else '' }}">
+    <label><input type="checkbox" name="in_stock" style="width:auto;" {% if not item or item.in_stock %}checked{% endif %}> В наличии</label>
+    <label><input type="checkbox" name="is_published" style="width:auto;" {% if not item or item.is_published %}checked{% endif %}> Опубликовано</label>
+    <button class="btn" type="submit">Сохранить</button>
+    <a class="btn gray" href="{{ url_for('admin_products') }}">Назад</a>
+  </form>
+</div>
+{% endblock %}

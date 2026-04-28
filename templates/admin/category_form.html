@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% block body %}
+<h1>{{ 'Редактировать категорию' if item else 'Добавить категорию' }}</h1>
+<div class="card">
+  <form method="post">
+    <label>Название</label>
+    <input name="name" value="{{ item.name if item else '' }}" required>
+    <label>Описание</label>
+    <textarea name="description">{{ item.description if item else '' }}</textarea>
+    <label>Порядок сортировки</label>
+    <input type="number" name="sort_order" value="{{ item.sort_order if item else 0 }}">
+    <label><input type="checkbox" name="is_active" style="width:auto;" {% if not item or item.is_active %}checked{% endif %}> Активна</label>
+    <button class="btn" type="submit">Сохранить</button>
+    <a class="btn gray" href="{{ url_for('admin_categories') }}">Назад</a>
+  </form>
+</div>
+{% endblock %}

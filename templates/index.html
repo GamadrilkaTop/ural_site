@@ -1,0 +1,286 @@
+{% extends "base.html" %}
+{% block title %}ЗАО ПП «Урал» — Механическая обработка металлов, производство ЖД запчастей{% endblock %}
+
+{% block content %}
+
+<!-- ═══ HERO SLIDER ════════════════════════════════════════════ -->
+<section class="hero">
+  <!-- Slide 1 -->
+  <div class="slide active">
+    <div class="slide-bg" style="background: linear-gradient(135deg, #1a2332 0%, #243044 60%, #2d5a3d 100%);"></div>
+    <div class="slide-overlay"></div>
+    <div class="container" style="width:100%;display:flex;">
+      <div class="slide-content animate-in">
+        <div class="slide-tag">Надёжность и точность</div>
+        <h1>Мы обеспечиваем<br>вашу безопасность</h1>
+        <p>Наш съёмник «СМУГ» используется при обслуживании пассажирских вагонов Российских железных дорог</p>
+        <a href="{{ url_for('catalog_pullers') }}" class="btn-primary">Подробнее</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide">
+    <div class="slide-bg" style="background: linear-gradient(135deg, #1c3a2a 0%, #243044 100%);"></div>
+    <div class="slide-overlay"></div>
+    <div class="container" style="width:100%;display:flex;">
+      <div class="slide-content">
+        <div class="slide-tag">Инновационные решения</div>
+        <h1>Муфта МППГ-02<br>для генератора</h1>
+        <p>В случае возникновения перегрузки муфта МППГ-02 обеспечивает разрыв механической связи редуктора с генератором</p>
+        <a href="{{ url_for('catalog_couplings') }}" class="btn-primary">Подробнее</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide">
+    <div class="slide-bg" style="background: linear-gradient(135deg, #1a2332 0%, #1c3a2a 100%);"></div>
+    <div class="slide-overlay"></div>
+    <div class="container" style="width:100%;display:flex;">
+      <div class="slide-content">
+        <div class="slide-tag">ЖД запчасти</div>
+        <h1>Производство деталей<br>для вагонов РЖД</h1>
+        <p>Наша компания производит сертифицированную продукцию для пассажирских вагонов Российских железных дорог</p>
+        <a href="{{ url_for('catalog_railway') }}" class="btn-primary">Каталог продукции</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <button class="slider-arrow prev"><i class="fa fa-chevron-left"></i></button>
+  <button class="slider-arrow next"><i class="fa fa-chevron-right"></i></button>
+  <div class="slider-dots">
+    <button class="slider-dot active"></button>
+    <button class="slider-dot"></button>
+    <button class="slider-dot"></button>
+  </div>
+</section>
+
+<!-- ═══ FEATURE BAR ═══════════════════════════════════════════ -->
+<div class="feature-bar">
+  <div class="container">
+    <div class="feature-item">
+      <div class="feature-icon"><i class="fa fa-tools"></i></div>
+      <div class="feature-text">
+        <strong>Широкий спектр услуг</strong>
+        <small>Механическая обработка</small>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"><i class="fa fa-globe"></i></div>
+      <div class="feature-text">
+        <strong>Работа в России и зарубежье</strong>
+        <small>Доставка по всей стране</small>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"><i class="fa fa-certificate"></i></div>
+      <div class="feature-text">
+        <strong>Весь товар сертифицирован</strong>
+        <small>Соответствие ГОСТ</small>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"><i class="fa fa-truck"></i></div>
+      <div class="feature-text">
+        <strong>Оперативная доставка</strong>
+        <small>Отгрузка товара</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PRODUCTS ══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Наши товары</h2>
+      <p>Сертифицированная продукция для пассажирских вагонов РЖД</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-img">
+          <img src="{{ url_for('static', filename='images/mufta-mppg02.jpg') }}" alt="Муфта упругая МППГ-02"
+               onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;product-img-placeholder&quot;><i class=&quot;fa fa-cog&quot;></i></div>'">
+        </div>
+        <div class="product-info">
+          <a href="{{ url_for('catalog_couplings') }}" class="product-name">Муфта упругая МППГ-02</a>
+          <div class="badge-instock">В наличии</div>
+        </div>
+      </div>
+      <div class="product-card reveal anim-delay-1">
+        <div class="product-img">
+          <img src="{{ url_for('static', filename='images/semnik-smug.jpg') }}" alt="Съёмник СМУГ"
+               onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;product-img-placeholder&quot;><i class=&quot;fa fa-wrench&quot;></i></div>'">
+        </div>
+        <div class="product-info">
+          <a href="{{ url_for('catalog_pullers') }}" class="product-name">Съёмник «СМУГ»</a>
+          <div class="badge-instock">В наличии</div>
+        </div>
+      </div>
+      <div class="product-card reveal anim-delay-2">
+        <div class="product-img">
+          <img src="{{ url_for('static', filename='images/gayka-s-kozhukhom.jpg') }}" alt="Гайка крайняя"
+               onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;product-img-placeholder&quot;><i class=&quot;fa fa-bolt&quot;></i></div>'">
+        </div>
+        <div class="product-info">
+          <a href="{{ url_for('catalog_railway') }}" class="product-name">Гайка крайняя</a>
+          <p class="product-article">Артикул: 34.33.254</p>
+          <div class="badge-instock">В наличии</div>
+        </div>
+      </div>
+      <div class="product-card reveal anim-delay-3">
+        <div class="product-img">
+          <img src="{{ url_for('static', filename='images/gayka-srednyaya.jpg') }}" alt="Гайка шпинтона"
+               onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;product-img-placeholder&quot;><i class=&quot;fa fa-circle-notch&quot;></i></div>'">
+        </div>
+        <div class="product-info">
+          <a href="{{ url_for('catalog_railway') }}" class="product-name">Гайка шпинтона</a>
+          <p class="product-article">Артикул: 30.21.103</p>
+          <div class="badge-instock">В наличии</div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-24">
+      <a href="{{ url_for('catalog_index') }}" class="btn-outline">Весь каталог</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ══════════════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-title center reveal">
+      <h2>Предоставляемые услуги</h2>
+      <p>Полный цикл механической обработки металлов на современном оборудовании</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <i class="fa fa-industry"></i>
+        <h3>Токарно-фрезерная обработка</h3>
+        <p>Токарные и фрезерные работы на станках с числовым программным управлением (ЧПУ) с высокой точностью.</p>
+        <a href="{{ url_for('services_metalworking') }}" class="btn-primary" style="font-size:0.82rem;padding:8px 18px;margin-top:14px;display:inline-block;">Подробнее</a>
+      </div>
+      <div class="service-card reveal anim-delay-1">
+        <i class="fa fa-cogs"></i>
+        <h3>Шлифование и финишная обработка</h3>
+        <p>Шлифовальный участок обеспечивает точность поверхности до требуемых стандартов и допусков.</p>
+        <a href="{{ url_for('services_metalworking') }}" class="btn-primary" style="font-size:0.82rem;padding:8px 18px;margin-top:14px;display:inline-block;">Подробнее</a>
+      </div>
+      <div class="service-card reveal anim-delay-2">
+        <i class="fa fa-drafting-compass"></i>
+        <h3>Сборка узлов и изделий</h3>
+        <p>Сборочный участок и отдел технического контроля гарантируют качество каждого изделия.</p>
+        <a href="{{ url_for('services_metalworking') }}" class="btn-primary" style="font-size:0.82rem;padding:8px 18px;margin-top:14px;display:inline-block;">Подробнее</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BANNER ════════════════════════════════════════════ -->
+<div class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2>Консультация по услугам</h2>
+        <p>Менеджеры компании с радостью ответят на ваши вопросы и произведут расчёт стоимости услуг и подготовят индивидуальное коммерческое предложение.</p>
+      </div>
+      <a href="{{ url_for('info_faq') }}" class="btn-primary">Задать вопрос</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT + NEWS ══════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-title">
+          <h2>О компании</h2>
+        </div>
+        <p>ЗАО ПП «Урал» занимается производством качественных деталей для пассажирских вагонов РЖД и предлагает широкий спектр услуг в области механической обработки металлов.</p>
+        <p>На предприятии механическая обработка металлов занимает одно из наиболее значимых направлений деятельности. Цех механической обработки включает заготовительный, токарно-фрезерный, шлифовальный и сборочный участки, а также ОТК.</p>
+        <p>Основу станочного парка составляют современные токарные и фрезерные станки с числовым программным управлением (ЧПУ), а также комплексы термической и химико-термической обработки.</p>
+        <div class="stats-row">
+          <div class="stat-box">
+            <strong>25+</strong>
+            <span>лет на рынке</span>
+          </div>
+          <div class="stat-box">
+            <strong>100+</strong>
+            <span>позиций в каталоге</span>
+          </div>
+          <div class="stat-box">
+            <strong>РЖД</strong>
+            <span>ключевой партнёр</span>
+          </div>
+        </div>
+        <a href="{{ url_for('company_about') }}" class="btn-outline" style="margin-top:24px;display:inline-block;">О компании</a>
+      </div>
+      <div class="reveal anim-delay-1">
+        <div class="section-title">
+          <h2>Новости</h2>
+        </div>
+        <div class="news-list">
+          <div class="news-item">
+            <div class="news-date">
+              <strong>2026</strong>
+              <small>МАР</small>
+            </div>
+            <div class="news-body">
+              <h4><a href="{{ url_for('info_news') }}">У нас появился обновлённый сайт</a></h4>
+              <p>Мы рады представить новый официальный сайт ЗАО ПП «Урал» с полным каталогом продукции.</p>
+            </div>
+          </div>
+          <div class="news-item">
+            <div class="news-date">
+              <strong>2025</strong>
+              <small>ДЕК</small>
+            </div>
+            <div class="news-body">
+              <h4><a href="{{ url_for('info_news') }}">Расширение производственных мощностей</a></h4>
+              <p>ЗАО ПП «Урал» приобрело новое высокоточное оборудование для токарной обработки.</p>
+            </div>
+          </div>
+          <div class="news-item">
+            <div class="news-date">
+              <strong>2025</strong>
+              <small>СЕН</small>
+            </div>
+            <div class="news-body">
+              <h4><a href="{{ url_for('info_news') }}">Сертификация продукции по ГОСТ</a></h4>
+              <p>Вся продукция предприятия прошла обязательную сертификацию и соответствует требованиям ГОСТ.</p>
+            </div>
+          </div>
+        </div>
+        <a href="{{ url_for('info_news') }}" class="btn-outline" style="margin-top:20px;display:inline-block;">Все новости</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PARTNERS ══════════════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-title center reveal mb-40">
+      <h2>Наши партнёры</h2>
+    </div>
+    <div class="partners-row reveal">
+      <div class="partner-logo">
+        <span class="partner-logo-text">РЖД</span>
+      </div>
+      <div class="partner-logo">
+        <span class="partner-logo-text">ВАГОНМАШ</span>
+      </div>
+      <div class="partner-logo">
+        <span class="partner-logo-text">ТРАНСМАШ</span>
+      </div>
+      <div class="partner-logo">
+        <span class="partner-logo-text">УРАЛВАГОН</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

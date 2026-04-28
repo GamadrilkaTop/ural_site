@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ-панель — ЗАО ПП «Урал»</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--green:#2ea84e;--dark:#1a2332;--dark2:#243044;--bg:#f3f6f8;--border:#d5dde5;--text:#1e2d3d}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .admin-wrap{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+    .sidebar{background:var(--dark);color:#fff;padding:24px 18px}
+    .brand{font-size:22px;font-weight:700;margin-bottom:6px}
+    .muted{color:#6d7a86;font-size:14px}
+    .sidebar .muted{color:rgba(255,255,255,.55);margin-bottom:24px}
+    .nav a{display:block;padding:12px 14px;border-radius:8px;margin-bottom:8px;color:rgba(255,255,255,.86)}
+    .nav a:hover,.nav a.active{background:var(--green);color:#fff}
+    .content{padding:28px}
+    .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+    h1{margin:0 0 18px;font-size:28px}
+    .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.06);margin-bottom:18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .stat strong{display:block;font-size:34px;color:var(--green)}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;font-weight:700}
+    .btn.gray{background:#607080}.btn.red{background:#c0392b}.btn.small{padding:7px 10px;font-size:13px}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}
+    th,td{padding:12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+    th{background:#eef3f6}
+    input,textarea,select{width:100%;padding:11px;border:1px solid var(--border);border-radius:8px;font:inherit}
+    textarea{min-height:150px}
+    label{display:block;font-weight:700;margin:14px 0 6px}
+    .login-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#1a2332,#243044)}
+    .login-box{width:100%;max-width:420px;background:#fff;border-radius:16px;padding:28px;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+    .flash{padding:12px 14px;border-radius:8px;margin-bottom:12px;background:#e8f5ee;color:#17652f}
+    .flash.error{background:#fdeaea;color:#9c1f1f}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}
+    @media(max-width:760px){.admin-wrap{grid-template-columns:1fr}.sidebar{position:static}.grid{grid-template-columns:1fr}.content{padding:18px}.top{align-items:flex-start;gap:12px;flex-direction:column}table{font-size:14px}}
+  </style>
+</head>
+<body>
+{% if request.endpoint == 'admin_login' %}
+  <div class="login-page">{% block login %}{% endblock %}</div>
+{% else %}
+<div class="admin-wrap">
+  <aside class="sidebar">
+    <div class="brand">ЗАО ПП «Урал»</div>
+    <div class="muted">Административная панель</div>
+    <nav class="nav">
+      <a href="{{ url_for('admin_dashboard') }}">Главная</a>
+      <a href="{{ url_for('admin_news') }}">Новости</a>
+      <a href="{{ url_for('admin_categories') }}">Категории</a>
+      <a href="{{ url_for('admin_products') }}">Товары</a>
+      <a href="{{ url_for('index') }}" target="_blank">Открыть сайт</a>
+      <a href="{{ url_for('admin_logout') }}">Выйти</a>
+    </nav>
+  </aside>
+  <main class="content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block body %}{% endblock %}
+  </main>
+</div>
+{% endif %}
+</body>
+</html>

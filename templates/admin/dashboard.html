@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+{% block body %}
+<div class="top"><h1>Панель управления</h1></div>
+<div class="grid">
+  <div class="card stat"><span>Новости</span><strong>{{ stats.news }}</strong></div>
+  <div class="card stat"><span>Категории</span><strong>{{ stats.categories }}</strong></div>
+  <div class="card stat"><span>Товары</span><strong>{{ stats.products }}</strong></div>
+</div>
+<div class="card">
+  <h2>Быстрые действия</h2>
+  <p class="muted">Здесь можно управлять содержимым сайта: новостями, категориями и товарами.</p>
+  <div class="actions">
+    <a class="btn" href="{{ url_for('admin_news_add') }}">Добавить новость</a>
+    <a class="btn" href="{{ url_for('admin_product_add') }}">Добавить товар</a>
+    <a class="btn gray" href="{{ url_for('index') }}" target="_blank">Открыть сайт</a>
+  </div>
+</div>
+{% endblock %}

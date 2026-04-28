@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% from "company/_sidebar.html" import company_sidebar %}
+{% block title %}Документы — ЗАО ПП «Урал»{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+  <div class="container">
+    <h1>Документы</h1>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Главная</a>
+      <i class="fa fa-chevron-right"></i>
+      <a href="{{ url_for('company_about') }}">Компания</a>
+      <i class="fa fa-chevron-right"></i>
+      <span>Документы</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-layout">
+    {{ company_sidebar('documents') }}
+
+    <div class="content-block">
+      <h2>Документы и сертификаты</h2>
+      <p>ЗАО ПП «Урал» работает в строгом соответствии с требованиями законодательства Российской Федерации и нормативными документами в области железнодорожного транспорта. Вся выпускаемая продукция сертифицирована и соответствует установленным требованиям.</p>
+
+      <h3>Регистрационные документы</h3>
+      <table class="info-table">
+        <thead>
+          <tr>
+            <th>Документ</th>
+            <th>Номер / Дата</th>
+            <th>Статус</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Свидетельство о государственной регистрации юридического лица</td>
+            <td>ОГРН: 1016601754812</td>
+            <td><span class="badge-instock">Действителен</span></td>
+          </tr>
+          <tr>
+            <td>Свидетельство о постановке на налоговый учёт</td>
+            <td>ИНН: 6668013870</td>
+            <td><span class="badge-instock">Действителен</span></td>
+          </tr>
+          <tr>
+            <td>Устав ЗАО ПП «Урал»</td>
+            <td>Ред. 2023 г.</td>
+            <td><span class="badge-instock">Актуален</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Сертификаты соответствия</h3>
+      <table class="info-table">
+        <thead>
+          <tr>
+            <th>Сертификат</th>
+            <th>Номер</th>
+            <th>Срок действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Сертификат соответствия на муфту упругую МППГ-02</td>
+            <td>№ РОСС RU.АГ97.Н00789</td>
+            <td>До 2027 г.</td>
+          </tr>
+          <tr>
+            <td>Сертификат соответствия на съёмник «СМУГ»</td>
+            <td>№ РОСС RU.АГ97.Н01024</td>
+            <td>До 2027 г.</td>
+          </tr>
+          <tr>
+            <td>Сертификат соответствия на запчасти ЖД (гайки)</td>
+            <td>№ РОСС RU.АГ97.Н01156</td>
+            <td>До 2026 г.</td>
+          </tr>
+          <tr>
+            <td>Декларация о соответствии ТР ТС 002/2011</td>
+            <td>№ ТС RU Д-RU.АГ97.В.12345</td>
+            <td>До 2026 г.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Лицензии и разрешения</h3>
+      <div class="cards-grid">
+        <div class="info-card">
+          <h4><i class="fa fa-file-alt text-green" style="margin-right:8px;"></i>Разрешение на применение</h4>
+          <p>Разрешение Ростехнадзора на применение технических устройств на объектах железнодорожного транспорта</p>
+        </div>
+        <div class="info-card">
+          <h4><i class="fa fa-check-square text-green" style="margin-right:8px;"></i>Система менеджмента качества</h4>
+          <p>Производственная система соответствует требованиям ГОСТ Р ИСО 9001 в части выпуска металлоизделий</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
