@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Обработка металлов — ЗАО ПП «Урал»{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+  <div class="container">
+    <h1>Обработка металлов</h1>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Главная</a>
+      <i class="fa fa-chevron-right"></i>
+      <a href="{{ url_for('services_index') }}">Услуги</a>
+      <i class="fa fa-chevron-right"></i>
+      <span>Обработка металлов</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="page-layout">
+      <div class="sidebar">
+        <nav class="sidebar-menu">
+          <h3><i class="fa fa-cogs" style="margin-right:8px;"></i>Услуги</h3>
+          <a href="{{ url_for('services_metalworking') }}" class="active">Обработка металлов <i class="fa fa-chevron-right"></i></a>
+        </nav>
+        <div style="background: var(--dark); color: white; padding: 20px; margin-top: 16px;">
+          <p style="font-size:0.85rem; opacity:0.7; margin-bottom: 10px;">Заказать услугу</p>
+          <a href="tel:+73435352727" style="color:var(--green); font-family:var(--font-heading); font-size:1rem; font-weight:600; display:block; margin-bottom:8px;">+7 (3435) 35-27-27</a>
+          <a href="{{ url_for('contacts') }}" class="btn-primary" style="font-size:0.8rem;padding:9px 16px;display:block;text-align:center;">Отправить запрос</a>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h2>Механическая обработка металлов</h2>
+        <p>ЗАО ПП «Урал» предлагает полный спектр услуг по механической обработке металлических деталей и узлов. Современный станочный парк с ЧПУ обеспечивает высокую точность и качество обработки.</p>
+
+        <div class="services-grid" style="margin: 28px 0;">
+          {% for s in [
+            ('fa-circle-notch', 'Токарная обработка', 'Обработка тел вращения: валов, втулок, дисков, фланцев. Точность до 6-го квалитета. Диаметр обработки до 500 мм, длина до 2000 мм.'),
+            ('fa-border-all', 'Фрезерная обработка', 'Фрезерование плоскостей, пазов, профилей сложной формы. Обрабатывающие центры с ЧПУ обеспечивают точность 0,01 мм.'),
+            ('fa-circle', 'Шлифование', 'Круглое и плоское шлифование до Ra 0,4. Шлифование внутренних и наружных поверхностей. Достижение высокого класса точности.'),
+            ('fa-wrench', 'Сборочные работы', 'Сборка узлов и изделий по конструкторской документации. ОТК контролирует каждый этап сборки.'),
+            ('fa-drafting-compass', 'Разработка КД', 'Разработка конструкторской и технологической документации. Изготовление опытных образцов по техническому заданию заказчика.'),
+            ('fa-check-double', 'Контроль качества', 'Входной, операционный и приёмочный контроль. Измерительная лаборатория с современным оборудованием.'),
+          ] %}
+          <div class="service-card" style="padding: 20px;">
+            <i class="fa {{ s[0] }}"></i>
+            <h3 style="font-size:0.95rem;">{{ s[1] }}</h3>
+            <p>{{ s[2] }}</p>
+          </div>
+          {% endfor %}
+        </div>
+
+        <h3>Применяемые материалы</h3>
+        <p>Опыт работы со всеми конструкционными и инструментальными сталями:</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px;">
+          {% for mat in ['Сталь 45', 'Сталь 40Х', 'Сталь 20', 'Сталь 65Г', 'Сталь У8А', 'Сталь ШХ15', 'Чугун СЧ20', 'Алюминий Д16', 'Бронза БрАЖ', 'Нержавеющая сталь 12Х18Н10Т'] %}
+          <span style="background: var(--light-gray); border: 1px solid var(--border); padding: 5px 12px; font-size: 0.82rem; font-family: var(--font-heading); letter-spacing: 0.04em; color: var(--dark);">{{ mat }}</span>
+          {% endfor %}
+        </div>
+
+        <h3>Производственные мощности</h3>
+        <table class="info-table">
+          <thead>
+            <tr><th>Вид обработки</th><th>Оборудование</th><th>Точность</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Токарная обработка</td><td>Токарно-фрезерный ОЦ с ЧПУ DMG MORI</td><td>6–8 квалитет</td></tr>
+            <tr><td>Фрезерование</td><td>3-координатный фрезерный ОЦ с ЧПУ</td><td>± 0,01 мм</td></tr>
+            <tr><td>Круглое шлифование</td><td>Станок 3М151</td><td>Ra 0,4–0,8</td></tr>
+            <tr><td>Плоское шлифование</td><td>Станок 3Г71</td><td>Ra 0,4</td></tr>
+            <tr><td>Сверление/расточка</td><td>Радиально-сверлильные, расточные</td><td>± 0,02 мм</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
