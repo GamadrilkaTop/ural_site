@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Каталог продукции — ЗАО ПП «Урал»{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+  <div class="container">
+    <h1>Каталог продукции</h1>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Главная</a>
+      <i class="fa fa-chevron-right"></i>
+      <span>Каталог</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="page-layout">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <nav class="sidebar-menu">
+          <h3><i class="fa fa-list" style="margin-right:8px;"></i>Каталог</h3>
+          <a href="{{ url_for('catalog_pullers') }}">Съёмники <i class="fa fa-chevron-right"></i></a>
+          <a href="{{ url_for('catalog_couplings') }}">Муфты <i class="fa fa-chevron-right"></i></a>
+          <a href="{{ url_for('catalog_railway') }}">ЖД Запчасти <i class="fa fa-chevron-right"></i></a>
+        </nav>
+      </div>
+
+      <div>
+        <p style="color: var(--gray); margin-bottom: 30px;">Наша компания специализируется на производстве качественных деталей и узлов для пассажирских вагонов Российских железных дорог. Вся продукция сертифицирована и соответствует требованиям технической документации.</p>
+        <div class="catalog-grid">
+          <div class="catalog-card">
+            <div class="catalog-card-img">
+              <div class="catalog-card-img-placeholder"><i class="fa fa-wrench"></i></div>
+            </div>
+            <div class="catalog-card-body">
+              <h3>Съёмники</h3>
+              <p>Специализированный инструмент для обслуживания и ремонта пассажирских вагонов РЖД.</p>
+              <a href="{{ url_for('catalog_pullers') }}" class="btn-primary" style="font-size:0.82rem;padding:9px 20px;">Перейти в раздел</a>
+            </div>
+          </div>
+          <div class="catalog-card">
+            <div class="catalog-card-img">
+              <div class="catalog-card-img-placeholder"><i class="fa fa-cog"></i></div>
+            </div>
+            <div class="catalog-card-body">
+              <h3>Муфты</h3>
+              <p>Упругие муфты для защиты оборудования пассажирских вагонов от перегрузок.</p>
+              <a href="{{ url_for('catalog_couplings') }}" class="btn-primary" style="font-size:0.82rem;padding:9px 20px;">Перейти в раздел</a>
+            </div>
+          </div>
+          <div class="catalog-card">
+            <div class="catalog-card-img">
+              <div class="catalog-card-img-placeholder"><i class="fa fa-train"></i></div>
+            </div>
+            <div class="catalog-card-body">
+              <h3>ЖД Запчасти</h3>
+              <p>Сертифицированные запасные части для пассажирских вагонов Российских железных дорог.</p>
+              <a href="{{ url_for('catalog_railway') }}" class="btn-primary" style="font-size:0.82rem;padding:9px 20px;">Перейти в раздел</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% from "company/_sidebar.html" import company_sidebar %}
+{% block title %}Вакансии — ЗАО ПП «Урал»{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+  <div class="container">
+    <h1>Вакансии</h1>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Главная</a>
+      <i class="fa fa-chevron-right"></i>
+      <a href="{{ url_for('company_about') }}">Компания</a>
+      <i class="fa fa-chevron-right"></i>
+      <span>Вакансии</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-layout">
+    {{ company_sidebar('vacancies') }}
+
+    <div class="content-block">
+      <h2>Открытые вакансии</h2>
+      <p>ЗАО ПП «Урал» — стабильное, динамично развивающееся предприятие. Мы ищем ответственных и квалифицированных специалистов для усиления нашей команды.</p>
+
+      <div class="vacancy-list" style="margin-top: 24px;">
+        {% for v in [
+          ('Токарь-фрезеровщик (ЧПУ)', 'Работа на современных обрабатывающих центрах с ЧПУ. Обработка металлических заготовок согласно техдокументации.', 'Опыт от 3 лет', 'Полная занятость', 'от 65 000 ₽'),
+          ('Инженер-конструктор', 'Разработка и сопровождение конструкторской документации. Работа с САПР (AutoCAD, SolidWorks).', 'Высшее техническое', 'Полная занятость', 'от 70 000 ₽'),
+          ('Шлифовщик', 'Выполнение шлифовальных операций на кругло- и плоскошлифовальных станках. Контроль качества поверхностей.', 'Опыт от 2 лет', 'Полная занятость', 'от 58 000 ₽'),
+          ('Мастер производственного участка', 'Организация и контроль производственного процесса. Распределение заданий, обеспечение выполнения плана.', 'Опыт от 5 лет', 'Полная занятость', 'от 80 000 ₽'),
+          ('Контролёр ОТК', 'Входной, операционный и приёмочный контроль деталей. Работа с измерительным инструментом.', 'Среднее специальное', 'Полная занятость', 'от 52 000 ₽'),
+        ] %}
+        <div class="vacancy-item">
+          <div class="vacancy-title">
+            <h4>{{ v[0] }}</h4>
+            <p>{{ v[1] }}</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end; flex-shrink: 0;">
+            <div class="vacancy-meta">
+              <span class="vacancy-tag"><i class="fa fa-graduation-cap" style="margin-right:4px;"></i>{{ v[2] }}</span>
+              <span class="vacancy-tag"><i class="fa fa-briefcase" style="margin-right:4px;"></i>{{ v[3] }}</span>
+            </div>
+            <strong style="font-family: var(--font-heading); font-size: 1rem; color: var(--green);">{{ v[4] }}</strong>
+            <a href="{{ url_for('contacts') }}" class="btn-primary" style="font-size: 0.8rem; padding: 8px 16px;">Откликнуться</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="info-card" style="margin-top: 28px;">
+        <h4><i class="fa fa-envelope text-green" style="margin-right:8px;"></i>Не нашли подходящую вакансию?</h4>
+        <p>Отправьте ваше резюме на электронную почту <a href="mailto:info@ppural.ru">info@ppural.ru</a> — мы рассмотрим его и свяжемся с вами при появлении подходящей позиции.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

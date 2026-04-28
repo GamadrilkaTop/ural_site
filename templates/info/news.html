@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% from "info/_sidebar.html" import info_sidebar %}
+{% block title %}Новости — ЗАО ПП «Урал»{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+  <div class="container">
+    <h1>Новости</h1>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Главная</a>
+      <i class="fa fa-chevron-right"></i>
+      <a href="{{ url_for('info_index') }}">Информация</a>
+      <i class="fa fa-chevron-right"></i>
+      <span>Новости</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-layout">
+    {{ info_sidebar('news') }}
+    <div>
+      {% set news = [
+        ('Март 2026', 'У нас появился обновлённый сайт', 'Мы рады представить обновлённый официальный сайт ЗАО ПП «Урал». Новый сайт содержит полный каталог продукции, информацию об услугах компании, технические характеристики изделий. Сайт адаптирован для мобильных устройств и работает в современных браузерах.'),
+        ('Декабрь 2025', 'Расширение производственных мощностей', 'ЗАО ПП «Урал» приобрело новый высокоточный токарно-фрезерный обрабатывающий центр с ЧПУ. Новое оборудование позволяет значительно расширить возможности по обработке деталей сложной геометрии и повысить производительность производства.'),
+        ('Сентябрь 2025', 'Сертификация продукции по ГОСТ', 'Вся продукция предприятия прошла плановую сертификацию и подтвердила соответствие требованиям ГОСТ и технических условий. Сертификаты соответствия обновлены на следующий период.'),
+        ('Июнь 2025', 'Новый договор с вагонным депо', 'ЗАО ПП «Урал» заключило договор на поставку съёмников и запасных частей с ещё одним вагонным депо Свердловской железной дороги. Ассортимент поставляемой продукции составляет более 30 наименований.'),
+        ('Март 2025', 'Участие в отраслевой конференции', 'Специалисты ЗАО ПП «Урал» приняли участие в региональной конференции по вопросам технического обслуживания железнодорожного подвижного состава. В рамках конференции были представлены новые разработки компании.'),
+      ] %}
+      {% for item in news %}
+      <div style="background: var(--white); border: 1px solid var(--border); margin-bottom: 20px; overflow: hidden;">
+        <div style="display: flex;">
+          <div style="background: var(--dark); color: white; padding: 20px 16px; text-align: center; min-width: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <span style="font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6;">{{ item[0] }}</span>
+          </div>
+          <div style="padding: 20px 24px; flex: 1;">
+            <h3 style="font-size: 1.05rem; margin-bottom: 10px; color: var(--dark);">{{ item[1] }}</h3>
+            <p style="color: var(--gray); font-size: 0.92rem; line-height: 1.65; margin: 0;">{{ item[2] }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
